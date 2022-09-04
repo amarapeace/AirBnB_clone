@@ -1,4 +1,4 @@
-#!?usr/bin/pythons
+#!/usr/bin/python3
 '''state.py
 '''
 

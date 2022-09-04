@@ -1,12 +1,13 @@
 #!/usr/bin/python3
-'''city.py
+'''review.py
 '''
 
 from models.base_model import BaseModel
 
 
-class City(BaseModel):
+class Review(BaseModel):
     ''' Class for City'''
 
-    state_id = ""
-    name = ""
+    place_id = ""
+    user_id = ""
+    text = ""

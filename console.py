@@ -5,12 +5,18 @@ import cmd
 from models.base_model import BaseModel
 from models.user import User
 from models import storage
+from models.city import City
+from models.state import State
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
 
-    model_list = ["BaseModel", "User"]
+    model_list = ["BaseModel", "User", "City", "State", "Amenity", 
+                  "Place", "Review"]
     
 
     def do_quit(self, args):

@@ -13,14 +13,11 @@ from models.amenity import Amenity
 from models import storage
 
 
-
 class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
 
-    model_list = ["BaseModel", "User", "City", "State", "Amenity", 
+    model_list = ["BaseModel", "User", "City", "State", "Amenity",
                   "Place", "Review"]
-
-    
 
     def do_quit(self, args):
         '''
@@ -34,7 +31,7 @@ class HBNBCommand(cmd.Cmd):
         '''
 
         return True
-    
+
     def emptyline(self):
         return False
 
@@ -56,7 +53,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return True
         else:
-            args = args.split(" ") # args becomes a list
+            args = args.split(" ")  # args becomes a list
 
         n = len(args)
 
@@ -64,10 +61,9 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return True
 
-
         if 'com' not in kwargs:
             return False
-        
+
         for arg in kwargs.values():
             if arg in ["show", "destroy"]:
                 if n < 2:
@@ -86,15 +82,13 @@ class HBNBCommand(cmd.Cmd):
                 elif n < 4:
                     print("** value missing **")
                     return True
-                
-
 
         return False
 
     def do_create(self, args):
 
         error = HBNBCommand.handle_errors(args)
-        
+
         if error:
             return
 
@@ -103,11 +97,11 @@ class HBNBCommand(cmd.Cmd):
         print(obj.id)
 
     def do_show(self, args):
-        error = HBNBCommand.handle_errors(args, com = "show")
+        error = HBNBCommand.handle_errors(args, com="show")
 
         if error:
             return
-        
+
         args = args.split(" ")
 
         objects = storage.all()
@@ -118,7 +112,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** no instance found **")
 
-    def do_destroy(self, args:str):
+    def do_destroy(self, args: str):
         error = HBNBCommand.handle_errors(args, com="destroy")
 
         if error:
@@ -128,7 +122,7 @@ class HBNBCommand(cmd.Cmd):
         key = f"{args[0]}.{args[1]}"
 
         objects = storage.all()
-        
+
         if key in objects and storage.delete(objects[key]):
             pass
         else:
@@ -175,7 +169,7 @@ class HBNBCommand(cmd.Cmd):
         objects = storage.all()
         key = f"{class_name}.{id}"
 
-        for k in objects: # obj is pointing to the key
+        for k in objects:  # obj is pointing to the key
             if k == key:
                 obj = objects[k]
                 setattr(obj, attr_name, attr_value)
@@ -184,6 +178,7 @@ class HBNBCommand(cmd.Cmd):
                 return
 
         print("** instance id not found **")
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()

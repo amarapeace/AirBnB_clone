@@ -17,12 +17,9 @@ from models import storage
 class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
 
-<<<<<<< HEAD
-    model_list = ["BaseModel", "User", "State", "City", "Amenity", "Place", "Review"]
-=======
     model_list = ["BaseModel", "User", "City", "State", "Amenity", 
                   "Place", "Review"]
->>>>>>> 272e8169692a553bc59c06c0f4099c887b54991c
+
     
 
     def do_quit(self, args):
